@@ -1,4 +1,4 @@
-package org.dgf.algm;
+package org.dgf.other;
 
 import java.util.Stack;
 

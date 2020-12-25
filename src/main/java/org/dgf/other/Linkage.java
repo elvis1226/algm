@@ -1,4 +1,4 @@
-package org.dgf.algm;
+package org.dgf.other;
 
 import com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
