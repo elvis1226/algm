@@ -1,4 +1,4 @@
-package org.dgf.algm;
+package org.dgf.sort;
 
 public class Count01Matrix {
     boolean isGreatStart(int actual) {

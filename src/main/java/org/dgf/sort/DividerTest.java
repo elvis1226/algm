@@ -1,4 +1,4 @@
-package org.dgf.algm;
+package org.dgf.sort;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package org.dgf.algm;
+package org.dgf.array;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

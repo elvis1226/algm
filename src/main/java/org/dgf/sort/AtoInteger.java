@@ -1,4 +1,4 @@
-package org.dgf.algm;
+package org.dgf.sort;
 
 /**
  * Created by apple on 18/3/30.
