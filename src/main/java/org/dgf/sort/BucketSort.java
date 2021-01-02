@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 public class BucketSort {
     public static void main(String[] argvs) {
-        int[] test1 = new int[]{7,8,3,9,0,0,9,1,5};
+        int[] test1 = new int[]{4,1,3,9,19, 5,8,17,16,15,14,7,2,1,13,10,12,11,20,18,6};
         /*sort(test1, 6, buckerTize);
 
         }*/
