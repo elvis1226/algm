@@ -1,5 +1,7 @@
 package org.dgf.tree;
 
+import apple.laf.JRSUIUtils;
+
 import java.util.Stack;
 
 /**
@@ -9,7 +11,7 @@ public class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;
-
+    public TreeNode parent;
     public TreeNode(int v) {
         this.val = v;
     }
@@ -92,6 +94,57 @@ public class TreeNode {
         int[] sum = {0};
         calcValue(root, sum);
         return root;
-
     }
+
+    public TreeNode maxNode(TreeNode root) {
+        while (root.right != null) {
+            root = root.right;
+        }
+        return root;
+    }
+
+    public TreeNode minNode(TreeNode root) {
+        while (root.left != null) {
+            root = root.left;
+        }
+        return root;
+    }
+
+    /**
+     * if the node has the right subtree, then return the minimum node of right subtree
+     * otherwise find the first top left ancestor.
+     */
+    public TreeNode findSuccessor(TreeNode node) {
+        if (node.right != null) {
+            return minNode(node.right);
+        }
+        else {
+            TreeNode pre = node.parent;
+            while (pre.left != node) {
+                node = pre;
+                pre = pre.parent;
+            }
+            return pre;
+        }
+    }
+
+    /**
+     * if the node has the left subtree, then return the maximum node of the left subtree
+     * otherwise find the first top right ancestor
+     */
+    public TreeNode findPredecessor(TreeNode node) {
+        if (node.left != null) {
+            return maxNode(node.left);
+        }
+        else {
+            TreeNode pre = node.parent;
+            while (pre.right != node) {
+                node = pre;
+                pre = pre.parent;
+            }
+            return pre;
+        }
+    }
+
+    
 }
