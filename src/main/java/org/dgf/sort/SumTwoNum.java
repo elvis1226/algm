@@ -3,9 +3,7 @@ package org.dgf.sort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by apple on 2018/8/24.
@@ -178,5 +176,17 @@ public class SumTwoNum {
             }
         }
         return result;
+    }
+
+    public static int[] twoNumberSum(int[] array, int targetSum) {
+        // Write your code here.
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0 ; i < array.length; i++) {
+            if (map.get(targetSum-array[i]) != null){
+                return new int[] {array[i], map.get(array[i])};
+            }
+            map.put(array[i], targetSum-array[i]);
+        }
+        return new int[0];
     }
 }
