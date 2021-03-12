@@ -1,7 +1,5 @@
 package org.dgf.tree;
 
-import apple.laf.JRSUIUtils;
-
 import java.util.Stack;
 
 /**
