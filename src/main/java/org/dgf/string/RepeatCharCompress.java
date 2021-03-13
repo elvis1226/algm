@@ -36,4 +36,23 @@ public class RepeatCharCompress {
 
         return sb.toString();
     }
+
+    public String runLengthEncoding2(String string) {
+    StringBuilder sb = new StringBuilder();
+    int currentlen = 1;
+    for(int i = 1; i < string.length();i++) {
+        char cur = string.charAt(i);
+        char pre = string.charAt(i-1);
+        if (cur != pre || currentlen == 9) {
+            sb.append(currentlen);
+            sb.append(pre);
+            currentlen = 0;
+        }
+        currentlen++;
+    }
+     sb.append(currentlen);
+     sb.append(string.charAt(string.length()-1));
+
+     return sb.toString();
+    }
 }
