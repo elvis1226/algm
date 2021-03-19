@@ -31,7 +31,6 @@ public class LongSubString {
             if (range.containsKey(s.charAt(j))) {
                 i = Math.max(i, (Integer)range.get(s.charAt(j)));
             }
-
             max = Math.max(max, j - i + 1);
             range.put(s.charAt(j), j + 1);
         }
