@@ -23,7 +23,6 @@ public class SmartNoContructedArray {
             changeCap += coins[i];
 
         }
-
         return changeCap+1;
     }
 }
