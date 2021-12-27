@@ -1,13 +1,18 @@
 package org.dgf.tree;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class WordMatch {
+    private final static Logger logger = LoggerFactory.getLogger(WordMatch.class);
     /*
-After catching your classroom students cheating before, you realize your students are getting craftier and hiding words in 2D grids of letters. The word may start anywhere in the grid, and consecutive letters can be either immediately below or immediately to the right of the previous letter.
+After catching your classroom students cheating before, you realize your students are getting craftier and hiding words in 2D grids of letters.
+The word may start anywhere in the grid, and consecutive letters can be either immediately below or immediately to the right of the previous letter.
 
 Given a grid and a word, write a function that returns the location of the word in the grid as a list of coordinates. If there are multiple matches, return any one.
 
@@ -55,26 +60,55 @@ w = length of the word
 
 */
 
-        public static int[][] accessed;
+
+        public static boolean check_point(char[][] grid, int rowIdx, int colIdx, String word, List<List<Integer>> result ) {
+            if (word.isEmpty()) {
+                return true;
+            }
+            if (rowIdx >= grid.length || colIdx >= grid[0].length) {
+                return false;
+            }
+
+            char curChar = word.charAt(0);
+            if(grid[rowIdx][colIdx] == curChar) {
+                List<Integer> curPoint = new ArrayList<>();
+                String remainig = word.substring(1);
+
+                curPoint.add(rowIdx);
+                curPoint.add(colIdx);
+                result.add(curPoint);
+
+                boolean right = check_point(grid, rowIdx, colIdx+1, remainig, result);
+                if (right) {
+                    return true;
+                }
+
+                boolean down = check_point(grid, rowIdx+1, colIdx, remainig, result);
+                if(down) {
+                    return true;
+                }
+                result.remove(result.size()-1);
+            }
+
+            return false;
+        }
+        public static List<List<Integer>> find_word_location(char[][] grid, String word) {
+            List<List<Integer>> result = new ArrayList<>();
 
 
-        public static List<int[]> find_word_location(char[][] grid, String word) {
-            List<int[]> result = new ArrayList<>();
-            accessed = new int[grid.length][grid[0].length];
+            for (int i = 0 ; i < grid.length; i ++) {
+                for (int j = 0; j < grid[0].length; j++) {
 
-            for (Character c : word.toCharArray()) {
-
-                for (int i = 0 ; i < grid.length; i ++) {
-                    for (int j = 0; j < grid[0].length; j++) {
-
-                        if (grid[i][j] == c) {
-
-                        }
+                    boolean matched = check_point(grid, i, j, word, result);
+                    if (matched) {
+                         return result;
                     }
+
                 }
             }
 
-            return null;
+
+            return result;
         }
 
         public static void main(String[] argv) {
@@ -99,8 +133,15 @@ w = length of the word
             char[][] grid2 = {{'a'}};
             String word9 = "a";
 
-
-
+            logger.info("{}",find_word_location(grid1,word1));
+            logger.info("{}",find_word_location(grid1,word2));
+            logger.info("{}",find_word_location(grid1,word3));
+            logger.info("{}",find_word_location(grid1,word4));
+            logger.info("{}",find_word_location(grid1,word5));
+            logger.info("{}",find_word_location(grid1,word6));
+            logger.info("{}",find_word_location(grid1,word7));
+            logger.info("{}",find_word_location(grid1,word8));
+            logger.info("{}",find_word_location(grid2,word9));
         }
 
 

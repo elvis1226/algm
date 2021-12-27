@@ -107,8 +107,7 @@ public class DomainCount {
                     "1,google.co.uk"
             };
             Map<String, Integer> result = calculateClicksByDomain(counts);
-            String s ="";
-            s. ()
-            result.entrySet().stream().flatMap()forEach(es -> System.out.println(es.getKey() + " : " + es.getValue()));
+
+            result.entrySet().stream().forEach(es -> System.out.println(es.getKey() + " : " + es.getValue()));
         }
 }
