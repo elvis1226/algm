@@ -142,6 +142,7 @@ w = length of the word
             logger.info("{}",find_word_location(grid1,word7));
             logger.info("{}",find_word_location(grid1,word8));
             logger.info("{}",find_word_location(grid2,word9));
+            logger.info("done");
         }
 
 
