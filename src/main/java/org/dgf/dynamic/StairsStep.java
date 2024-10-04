@@ -44,4 +44,43 @@ public class StairsStep {
 
         return steps[height];
     }
+
+    public static int countStep(int n, Map<Integer, Integer> memo) {
+        // hop 1, 2 or 3 steps
+        int result = 0;
+        if (memo.containsKey(n)){
+            return memo.get(n);
+        }
+
+        if (n < 0) {
+            return 0;
+        }
+
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+
+        result += countStep(n-1, memo);
+
+        result += countStep(n-2, memo);
+
+        result += countStep(n-3, memo);
+
+        memo.put(n, result);
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Map<Integer, Integer> memo = new HashMap<>();
+
+        int steps = countStep(3, memo);
+
+        System.out.println("n=3, step : " + steps);
+        memo.clear();
+
+        steps = countStep(5, memo);
+
+        System.out.println("n=5, step :" + steps);
+    }
 }
